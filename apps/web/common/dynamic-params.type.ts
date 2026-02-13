@@ -1,0 +1,1 @@
+export type DynamicParam<T extends string = string> = Promise<Record<T, string[]>>

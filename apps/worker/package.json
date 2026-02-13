@@ -1,0 +1,51 @@
+{
+  "name": "worker",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc --build",
+    "build.watch": "tsc --build --watch",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "ts_node": "node --env-file=.env -r ts-node/register",
+    "start": "pnpm run ts_node src/user-greeting/worker.ts",
+    "dev": "pnpm run ts_node --watch src/worker.ts",
+    "temporal": "temporal server start-dev --ui-port 8080 --db-filename clusterdata.db",
+    "test": "mocha --exit --require ts-node/register --require source-map-support/register src/mocha/*.test.ts"
+  },
+  "nodemonConfig": {
+    "execMap": {
+      "ts": "ts-node"
+    },
+    "ext": "ts",
+    "watch": [
+      "src"
+    ]
+  },
+  "dependencies": {
+    "@repo/common": "workspace:*",
+    "@temporalio/activity": "^1.14.1",
+    "@temporalio/client": "^1.14.1",
+    "@temporalio/envconfig": "^1.14.1",
+    "@temporalio/worker": "^1.14.1",
+    "@temporalio/workflow": "^1.14.1",
+    "nanoid": "5.x"
+  },
+  "devDependencies": {
+    "@temporalio/testing": "^1.14.1",
+    "@types/mocha": "10.x",
+    "@types/node": "^25.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.55.0",
+    "@typescript-eslint/parser": "^8.55.0",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-deprecation": "^3.0.0",
+    "mocha": "11.x",
+    "nodemon": "^3.1.11",
+    "prettier": "^3.8.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "@tsconfig/node24": "^24.0.4"
+  }
+}
