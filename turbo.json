@@ -39,6 +39,9 @@
       "persistent": true
     },
     "worker#dev": {
+      "dependsOn": [
+        "^build"
+      ],
       "with": [
         "worker#temporal"
       ],
