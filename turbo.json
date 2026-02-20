@@ -29,6 +29,7 @@
     },
     "dev": {
       "cache": false,
+      "interruptible": true,
       "dependsOn": [
         "^build"
       ],
